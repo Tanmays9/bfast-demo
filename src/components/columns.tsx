@@ -168,8 +168,8 @@ export const columns: ColumnDef<Item>[] = [
   {
     id: "actions",
     enableHiding: false,
-    cell: ({ row }) => {
-      const payment = row.original
+    cell: () => {
+      // const payment = row.original
 
       return (
         <DropdownMenu>
