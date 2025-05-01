@@ -1,0 +1,61 @@
+import { Item } from "./types";
+
+export const Data: Item[] = [
+  {
+  id:'',
+  awb : '33081910100446/',
+  cid : 'QFQKIRBNOMJZXH/',
+  address: 'HNO 347 A VPO MITROAN NAJAFGARH NEW DELHI 43 , Vishal Gahlot, Mitroan, New Delhi, New delhi',
+  amount: 100,
+  codamount: 2500,
+  Courier_Partner: 'Delhivery',
+  Delivery_Center_Name: 'Greater',
+  name: 'Vishal Gahlot',
+  // Order_Creation_Date: new Date(),
+  Payment_Mode: 'PREPAID',
+  phone: 8178685219,
+  pincode: 110043,
+  quantity: 1,
+  status: 'blocked',
+  Transport_Mode: 'Surface',
+  zone: 'New'
+},
+{
+  id:'',
+  awb : '33081910100447/',
+  cid : 'QFQKIRBNOMJZXH/',
+  address: 'HNO 347 A VPO MITROAN NAJAFGARH NEW DELHI 43 , Vishal Gahlot, Mitroan, New Delhi, New delhi',
+  amount: 100,
+  codamount: 2500,
+  Courier_Partner: 'Delhivery',
+  Delivery_Center_Name: 'Greater',
+  name: 'Vishal Gahlot',
+  // Order_Creation_Date: new Date(),
+  Payment_Mode: 'PREPAID',
+  phone: 8178685219,
+  pincode: 110043,
+  quantity: 1,
+  status: 'blocked',
+  Transport_Mode: 'Surface',
+  zone: 'New'
+},
+{
+  id:'',
+  awb : '33081910100448/',
+  cid : 'QFQKIRBNOMJZXH/',
+  address: 'HNO 347 A VPO MITROAN NAJAFGARH NEW DELHI 43 , Vishal Gahlot, Mitroan, New Delhi, New delhi',
+  amount: 100,
+  codamount: 2500,
+  Courier_Partner: 'Delhivery',
+  Delivery_Center_Name: 'Greater',
+  name: 'Pankag Gahlot',
+  // Order_Creation_Date: new Date(),
+  Payment_Mode: 'PREPAID',
+  phone: 8178685219,
+  pincode: 110043,
+  quantity: 1,
+  status: 'blocked',
+  Transport_Mode: 'Surface',
+  zone: 'New'
+}
+];
