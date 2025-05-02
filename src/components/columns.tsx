@@ -2,7 +2,7 @@ import { Checkbox } from "@radix-ui/react-checkbox"
 import { ColumnDef } from "@tanstack/react-table"
 // import { Payment } from "./data-table"
 import { Item } from "@/lib/types"
-import { ArrowUpDown, Download } from "lucide-react"
+import {  Download } from "lucide-react"
 import { Button } from "./ui/button"
 import { generateSingleCSV } from "@/lib/zip"
 
