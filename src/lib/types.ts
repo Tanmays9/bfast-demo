@@ -1,7 +1,7 @@
 export type Item = {
     awb: string
     cid: string
-    Order_Creation_Date? : Date
+    Order_Creation_Date? : string
     name: string
     phone: number
     address?: string

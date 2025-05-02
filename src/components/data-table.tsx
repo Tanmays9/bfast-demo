@@ -32,42 +32,58 @@ import Link from "next/link"
 import { useState } from "react"
 import { Item } from "@/lib/types"
 import dynamic from "next/dynamic";
+import { generatebulkCSV } from "@/lib/zip"
+
 
 
 
 export function DataTable() {
     // state for storing info about user creating Invoice
     const [instance] = usePDF({
-        document: <MyDocument data={Data[0]}/>
+        document: <MyDocument data={Data[0]} />
     })
+    const [rowSelection, setRowSelection] = useState({})
+    const [customerInfo, setCustomerInfo] = useState(Data)
+    function filterdata(searchstr: string){
+        if(searchstr != ''){
+
+            setCustomerInfo(Data.filter(dta=>{
+                console.log(dta.name.includes(searchstr))
+                return dta.name.toLowerCase().includes(searchstr.toLowerCase()) 
+                ||dta.awb.toLowerCase().includes(searchstr.toLowerCase())
+                ||dta.pincode.toString().includes(searchstr.toLowerCase())
+            }))
+        }else{
+            setCustomerInfo(Data)
+        }
+    }
 
     const table = useReactTable({
-        data: Data,
+        data: customerInfo,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
+        onRowSelectionChange: setRowSelection,
+        state: {
+            rowSelection
+        },
     })
     return (
         <div className="w-full">
             <div className="flex items-center py-4">
                 <Input
-                    placeholder="Filter names..."
-                    value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-                    onChange={(event) =>
-                        table.getColumn("name")?.setFilterValue(event.target.value)
-                    }
+                    placeholder="Filter names, AWB, Pincode..."
+                    
+                    onChange={(event)=> filterdata(event.target.value)}
                     className="max-w-sm"
                 />
                 <Button variant="outline" className="ml-auto" onClick={() => generateCSV(Data)}>
                     Download CSV
                 </Button>
-                {instance.loading ? "loading..." :
-                    <Link href={instance.url!} download={"test.pdf"}>
-                        <Button variant="outline" className="ml-auto" >
-                            Download All Shipping Label
-                        </Button>
-                    </Link>}
-
+                
+                <Button variant="outline" className="ml-auto" onClick={generatebulkCSV} >
+                    Download All Shipping Label
+                </Button>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
