@@ -1,16 +1,15 @@
 "use client"
-import JSZip from "jszip";
+import { MyDocument } from "@/lib/pdf";
 import { pdf } from '@react-pdf/renderer';
-import { MyDocument } from "@/lib/pdf"
-import { Data } from "./data";
 import { saveAs } from "file-saver";
-import { Item } from "./types";
+import JSZip from "jszip";
+import { Data } from "./data";
 
 
 export function generatebulkCSV() {
     const zip = new JSZip();
 
-    const remoteZips = Data.map(dta => {
+    Data.map(dta => {
         return zip.file(`${dta.cid}.pdf`, pdf(<MyDocument data={dta} />).toBlob());
     })
     

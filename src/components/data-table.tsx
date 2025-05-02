@@ -1,6 +1,12 @@
 "use client"
 
 import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import {
     Table,
     TableBody,
     TableCell,
@@ -8,40 +14,27 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { generateCSV } from "@/lib/csv"
+import { Data } from "@/lib/data"
+import { generatebulkCSV } from "@/lib/zip"
 import {
     flexRender,
     getCoreRowModel,
-    useReactTable,
-    getFilteredRowModel
+    getFilteredRowModel,
+    useReactTable
 } from "@tanstack/react-table"
-import { columns } from "./columns"
-import { Data } from "@/lib/data"
-import { Input } from "./ui/input"
-import {
-    DropdownMenu,
-    DropdownMenuCheckboxItem,
-    DropdownMenuContent,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react"
-import { Button } from "./ui/button"
-import { generateCSV } from "@/lib/csv"
-import { usePDF } from '@react-pdf/renderer';
-import { MyDocument } from "@/lib/pdf"
-import Link from "next/link"
 import { useState } from "react"
-import { Item } from "@/lib/types"
-import dynamic from "next/dynamic";
-import { generatebulkCSV } from "@/lib/zip"
+import { columns } from "./columns"
+import { Button } from "./ui/button"
+import { Input } from "./ui/input"
 
 
 
 
 export function DataTable() {
     // state for storing info about user creating Invoice
-    const [instance] = usePDF({
-        document: <MyDocument data={Data[0]} />
-    })
+    
     const [rowSelection, setRowSelection] = useState({})
     const [customerInfo, setCustomerInfo] = useState(Data)
     function filterdata(searchstr: string){
