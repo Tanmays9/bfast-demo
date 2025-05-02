@@ -143,6 +143,7 @@ export function DataTable() {
                                         <TableCell key={cell.id}>
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </TableCell>
+                                        
                                     ))}
                                 </TableRow>
                             ))

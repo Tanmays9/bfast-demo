@@ -2,6 +2,9 @@ import { Checkbox } from "@radix-ui/react-checkbox"
 import { ColumnDef } from "@tanstack/react-table"
 // import { Payment } from "./data-table"
 import { Item } from "@/lib/types"
+import { ArrowUpDown, Download } from "lucide-react"
+import { Button } from "./ui/button"
+import { generateSingleCSV } from "@/lib/zip"
 
 
 
@@ -27,6 +30,21 @@ export const columns: ColumnDef<Item>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
+  },
+  {
+    accessorKey: "email",
+    header:() => <div className="text-right">Download PDF</div>,
+    cell: ({ row }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => generateSingleCSV(row.index)}
+        >
+          
+          <Download/>
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "awb",
@@ -126,21 +144,7 @@ export const columns: ColumnDef<Item>[] = [
       <div className="capitalize">{row.getValue("zone")}</div>
     ),
   },
-  // {
-  //   accessorKey: "email",
-  //   header: ({ column }) => {
-  //     return (
-  //       <Button
-  //         variant="ghost"
-  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  //       >
-  //         Email
-  //         <ArrowUpDown />
-  //       </Button>
-  //     )
-  //   },
-  //   cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-  // },
+  
   {
     accessorKey: "amount",
     header: () => <div className="text-right">Amount</div>,

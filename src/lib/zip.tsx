@@ -4,6 +4,7 @@ import { pdf } from '@react-pdf/renderer';
 import { MyDocument } from "@/lib/pdf"
 import { Data } from "./data";
 import { saveAs } from "file-saver";
+import { Item } from "./types";
 
 
 export function generatebulkCSV() {
@@ -24,5 +25,9 @@ export function generatebulkCSV() {
     //   })
     //   .catch(() => {
     //   });
+}
+export async function generateSingleCSV(index: number) {
+    const blob = await pdf(<MyDocument data={Data[index]} />).toBlob()
+    saveAs(blob, `${Data[index].cid}.pdf`)
 }
 
