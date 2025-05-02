@@ -1,11 +1,10 @@
 export type Item = {
-    id: string
     awb: string
     cid: string
-    // Order_Creation_Date : Date
+    Order_Creation_Date? : Date
     name: string
     phone: number
-    address: string
+    address?: string
     pincode : number
     quantity: number
     Payment_Mode: string

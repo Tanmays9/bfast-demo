@@ -26,10 +26,21 @@ import {
 import { ChevronDown } from "lucide-react"
 import { Button } from "./ui/button"
 import { generateCSV } from "@/lib/csv"
+import { usePDF } from '@react-pdf/renderer';
+import { MyDocument } from "@/lib/pdf"
+import Link from "next/link"
+import { useState } from "react"
+import { Item } from "@/lib/types"
+import dynamic from "next/dynamic";
 
 
 
 export function DataTable() {
+    // state for storing info about user creating Invoice
+    const [instance] = usePDF({
+        document: <MyDocument data={Data[0]}/>
+    })
+
     const table = useReactTable({
         data: Data,
         columns,
@@ -47,13 +58,17 @@ export function DataTable() {
                     }
                     className="max-w-sm"
                 />
-                <Button variant="outline" className="ml-auto" onClick={() => generateCSV( Data)}>
-                Download CSV
+                <Button variant="outline" className="ml-auto" onClick={() => generateCSV(Data)}>
+                    Download CSV
                 </Button>
-                <Button variant="outline" className="ml-auto">
-                Download All Shipping Label
-                </Button>
-                
+                {instance.loading ? "loading..." :
+                    <Link href={instance.url!} download={"test.pdf"}>
+                        <Button variant="outline" className="ml-auto" >
+                            Download All Shipping Label
+                        </Button>
+                    </Link>}
+
+
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="ml-auto">

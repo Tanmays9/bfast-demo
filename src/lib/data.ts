@@ -2,7 +2,6 @@ import { Item } from "./types";
 
 export const Data: Item[] = [
   {
-  id:'',
   awb : '33081910100446/',
   cid : 'QFQKIRBNOMJZXH/',
   address: 'HNO 347 A VPO MITROAN NAJAFGARH NEW DELHI 43 , Vishal Gahlot, Mitroan, New Delhi, New delhi',
@@ -21,7 +20,6 @@ export const Data: Item[] = [
   zone: 'New'
 },
 {
-  id:'',
   awb : '33081910100447/',
   cid : 'QFQKIRBNOMJZXH/',
   address: 'HNO 347 A VPO MITROAN NAJAFGARH NEW DELHI 43 , Vishal Gahlot, Mitroan, New Delhi, New delhi',
@@ -40,7 +38,6 @@ export const Data: Item[] = [
   zone: 'New'
 },
 {
-  id:'',
   awb : '33081910100448/',
   cid : 'QFQKIRBNOMJZXH/',
   address: 'HNO 347 A VPO MITROAN NAJAFGARH NEW DELHI 43 , Vishal Gahlot, Mitroan, New Delhi, New delhi',
