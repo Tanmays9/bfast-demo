@@ -1,12 +1,17 @@
 "use client"
 import { Page, Text, View, Document, StyleSheet, Image } from "@react-pdf/renderer";
 import { Item } from "./types";
+import JsBarcode from "jsbarcode";
 
 const styles = StyleSheet.create({
   page: {
     flexDirection: "row"
   },
   logo: {
+    width: 96,
+    height: 51
+  },
+  barcode: {
     width: 96,
     height: 51
   },
@@ -20,7 +25,12 @@ type Props = {
   data: Item,
 };
 
-export const MyDocument = (props :Props) => (
+export const MyDocument = (props :Props) => {
+  const canvas = document.createElement('canvas');
+  JsBarcode(canvas, `AWB# ${props.data.awb}`);
+  const barcode = canvas.toDataURL();
+
+return (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
@@ -45,7 +55,9 @@ export const MyDocument = (props :Props) => (
       </View>
       <View style={styles.section}>
         <Image style={styles.logo} src="https://www.bfastservices.com/_next/image?url=%2Fimg%2Fbfastlogo.png&w=96&q=75" />
+        <Image  style={styles.barcode} src={barcode} />
+
       </View>
     </Page>
   </Document>
-);
+)};
